@@ -88,6 +88,7 @@ public class HomeEtbFragment extends Fragment {
 
     private TextView EtbFavoris, ArtistFavoris;
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -115,9 +116,9 @@ public class HomeEtbFragment extends Fragment {
         img = (ImageView) rootView.findViewById(R.id.imageView);
         wv = (WebView) rootView.findViewById(R.id.webView);
 
-       /* EtbFavoris = (TextView) rootView.findViewById(R.id.etablissement);
+        EtbFavoris = (TextView) rootView.findViewById(R.id.etablissement);
         ArtistFavoris = (TextView) rootView.findViewById(R.id.artist);
-*/
+
         new Thread(new Runnable() {
             public void run() {
                 getActivity().runOnUiThread(new Runnable() {
@@ -574,7 +575,7 @@ public class HomeEtbFragment extends Fragment {
             wv.loadDataWithBaseURL("", html, "text/html", "UTF-8", "");
 
         }
-        //afficherFavoris(i);
+        afficherFavoris(i);
     }
 
     public void insertContact(String name, String email, String tel) {
@@ -653,6 +654,7 @@ public class HomeEtbFragment extends Fragment {
             nameValuePairs.add(new BasicNameValuePair("tag", tag));
             nameValuePairs.add(new BasicNameValuePair("id_etablissement", id_etablissement));
 
+            Log.e("ID", id_etablissement);
             //setting the connection to the database
             try {
                 //Setting up the default http client
@@ -714,9 +716,7 @@ public class HomeEtbFragment extends Fragment {
                     JSONObject element = finalResult.getJSONObject(i);
 
                    EtbId.add(element.getString("id_etablissement"));
-                   ArtistId.add(element.getString("id_etablissement"));
-
-
+                   ArtistId.add(element.getString("id_artist"));
                 }
                 is.close();
 
@@ -732,10 +732,10 @@ public class HomeEtbFragment extends Fragment {
         else
             task.execute();
     }
-/*
+
     protected  void afficherFavoris(int i) {
 
        EtbFavoris.setText(EtbId.get(i).toString());
         ArtistFavoris.setText(ArtistId.get(i).toString());
-    }*/
+    }
 }

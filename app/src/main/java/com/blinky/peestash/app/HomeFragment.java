@@ -71,9 +71,9 @@ public class HomeFragment extends Fragment {
     private ArrayAdapter<String> adapter;
     private ArrayList<String> arrayList;
 
-    ShowAllEventsTask eventsTask;
-
     String id_artist;
+
+    String idEtablissement;
 
 
     @Override
@@ -119,10 +119,6 @@ public class HomeFragment extends Fragment {
             }
         }).start();
 
-        eventsTask = new ShowAllEventsTask();
-        StartAsyncTaskInParallel(eventsTask);
-
-
         final GestureDetector gesture = new GestureDetector(getActivity(),
                 new GestureDetector.SimpleOnGestureListener() {
                     @Override
@@ -143,10 +139,12 @@ public class HomeFragment extends Fragment {
 
                                 if (i == (nbreponse - 1)) {
                                     i = 0;
+
                                     afficheProfilContent(i);
 
                                 }else {
                                     i++;
+
                                     afficheProfilContent(i);
 
                                 }
@@ -158,10 +156,12 @@ public class HomeFragment extends Fragment {
                                 if(i==0)
                                 {
                                     i=nbreponse-1;
+
                                     afficheProfilContent(i);
 
                                 } else {
                                     i--;
+
                                     afficheProfilContent(i);
 
                                 }
@@ -455,10 +455,12 @@ public class HomeFragment extends Fragment {
                     genre_musical.add(element.getString("genre_musical"));
                     idEtb.add(element.getString("id"));
                     etablissement_id.add(element.getString("id"));
+
+
                 }
                 i=0;
-
                 afficheProfilContent(i);
+
 
                 is.close();
 
@@ -474,7 +476,7 @@ public class HomeFragment extends Fragment {
     private class ShowAllEventsTask extends AsyncTask<Void, Void, InputStream> {
 
         String result = null;
-        String tag = "read_AllEtbEvents";
+        String tag = "read_AllEtablissementEvents";
         String type="etablissement";
         InputStream is = null;
         List<NameValuePair> nameValuePairs;
@@ -484,9 +486,8 @@ public class HomeFragment extends Fragment {
             nameValuePairs = new ArrayList<NameValuePair>(1);
             //adding string variables into the NameValuePairs
             nameValuePairs.add(new BasicNameValuePair("tag", tag));
-            nameValuePairs.add(new BasicNameValuePair("id_user", id_user));
+            nameValuePairs.add(new BasicNameValuePair("id_etablissement", idEtablissement));
             nameValuePairs.add(new BasicNameValuePair("type", type));
-
 
             //setting the connection to the database
             try {
@@ -541,7 +542,7 @@ public class HomeFragment extends Fragment {
                 // Access by key : value
                 nbreponse = finalResult.length();
                 String nb = String.valueOf(nbreponse);
-                System.out.println("nb reponse "+ nb);
+                System.out.println("nb reponse evenements etablissements "+ nb);
 
                 titre = new ArrayList<String>(nbreponse);
                 ville = new ArrayList<String>(nbreponse);
@@ -550,7 +551,7 @@ public class HomeFragment extends Fragment {
                 imgUrl = new ArrayList<String>(nbreponse);
                 genre_musical = new ArrayList<String>(nbreponse);
                 statut_recrutement = new ArrayList<String>(nbreponse);
-                id_etablissement = new ArrayList<String>(nbreponse);
+                //id_etablissement = new ArrayList<String>(nbreponse);
 
                 for (i = 0; i < finalResult.length(); i++) {
 
@@ -563,9 +564,13 @@ public class HomeFragment extends Fragment {
                     imgUrl.add(element.getString("img_url"));
                     genre_musical.add(element.getString("genre_musical"));
                     statut_recrutement.add(element.getString("statut_recrutement"));
-                    id_etablissement.add(element.getString("id_etablissement"));
+                   // id_etablissement.add(element.getString("id_etablissement"));
 
                 }
+                /*for(i=0;i<finalResult.length();i++) {
+                    afficherEvent(i);
+                }*/
+
                 is.close();
 
             } catch (Exception e) {
@@ -577,8 +582,31 @@ public class HomeFragment extends Fragment {
 
         }
     }
+    protected  void afficherEvent(int i) {
+
+
+        arrayList.add(titre.get(i).toString().toUpperCase() + "\n" + "Date : " + date_debut.get(i).toString()
+                + "\n" + ville.get(i).toString().toUpperCase() + ", " + pays.get(i).toString().toUpperCase()
+                + "\n" + "Genre : " + genre_musical.get(i).toString().replace(String.valueOf("["), "").replace(String.valueOf("]"), "")
+                + "\n" + "Statut du recrutement : " + statut_recrutement.get(i).toString());
+
+        list.setAdapter(adapter);
+    }
+
     protected void afficheProfilContent(final int i)
     {
+
+        Log.e("event ", etablissement_id.get(i).toString());
+        idEtablissement = etablissement_id.get(i).toString();
+        new Thread(new Runnable() {
+            public void run() {
+                getActivity().runOnUiThread(new Runnable() {
+                    public void run() {
+                        new ShowAllEventsTask().execute();
+                    }
+                });
+            }
+        }).start();
         Email.setText(email.get(i).toString());
         Nom.setText(nom.get(i).toString());
         Adresse.setText(adresse.get(i).toString());
@@ -632,23 +660,6 @@ public class HomeFragment extends Fragment {
             img.setImageDrawable(getResources().getDrawable(R.drawable.ic_profil_etb));
 
         }
-        //if(idEtb.get(i).toString().equals(id_etablissement.get(i).toString())) {
-            afficherEvent(i);
-
-        list.setAdapter(adapter);
-
-
-    }
-    protected  void afficherEvent(int i) {
-
-
-            arrayList.add(titre.get(i).toString().toUpperCase() + "\n" + "Date : " + date_debut.get(i).toString()
-                    + "\n" + ville.get(i).toString().toUpperCase() + ", " + pays.get(i).toString().toUpperCase()
-                    + "\n" + "Genre : " + genre_musical.get(i).toString().replace(String.valueOf("["), "").replace(String.valueOf("]"), "")
-                    + "\n" + "Statut du recrutement : " + statut_recrutement.get(i).toString());
-
-
-
     }
 
     public void insertContact(String name, String email, String tel) {
@@ -663,12 +674,6 @@ public class HomeFragment extends Fragment {
         }
     }
 
-    private void StartAsyncTaskInParallel(ShowAllEventsTask task) {
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
-            task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
-        else
-            task.execute();
-    }
 
     protected void AddEtbFavoriteTask(String id_etablissement, String id_artist) {
 
