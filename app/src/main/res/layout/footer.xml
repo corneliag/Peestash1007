@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:padding="15dip"
+                android:background="@color/beige"
+                android:layout_gravity="bottom"
+                android:orientation="vertical" >
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+           >
+    <Button android:layout_height="10sp" android:layout_width="10sp"
+            android:id="@+id/btn1"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/rounded_cell" />
+
+    <Button android:layout_height="10sp" android:layout_width="10sp"
+            android:id="@+id/btn2"
+            android:layout_toRightOf="@id/btn1"
+            android:layout_marginLeft="5dip"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/rounded_cell" />
+
+        <Button android:layout_height="10sp" android:layout_width="10sp"
+                android:id="@+id/btn3"
+                android:layout_toRightOf="@id/btn2"
+                android:layout_marginLeft="5dip"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/rounded_cell" />
+
+        <Button android:layout_height="10sp" android:layout_width="10sp"
+                android:id="@+id/btn4"
+                android:layout_toRightOf="@id/btn3"
+                android:layout_marginLeft="5dip"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/rounded_cell" />
+
+        </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginTop="20dp">
+        <Button
+                android:id="@+id/btn"
+                android:layout_width="500dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btn3"
+                android:background="@drawable/orange_button"
+                android:text="@string/seconnecter"
+                style="@style/button_text"
+                />
+</LinearLayout>
+</RelativeLayout>

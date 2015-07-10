@@ -1,0 +1,166 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:paddingLeft="@dimen/activity_horizontal_margin"
+              android:paddingRight="@dimen/activity_horizontal_margin"
+              android:paddingTop="@dimen/activity_vertical_margin"
+              android:paddingBottom="@dimen/activity_vertical_margin"
+              tools:context="com.blinky.peestash.app.ArtistHomeActivity" android:orientation="vertical">
+
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+              android:textAppearance="?android:attr/textAppearanceMedium" android:id="@+id/textView57"
+              android:text="Informations de profil" android:gravity="center_horizontal"/>
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/scrollView" android:layout_gravity="right">
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false" android:weightSum="300" android:orientation="horizontal"
+                    >
+                <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="174dp"
+                        android:layout_height="128dp"
+                        android:minWidth="120dp" android:minHeight="90dp"
+                        android:maxWidth="300dp" android:maxHeight="220dp"/>
+                <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:paddingLeft="5dp">
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:id="@+id/Pseudo" android:width="230dp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:textAppearance="?android:attr/textAppearanceMedium" android:id="@+id/Nom"
+                              android:width="250dp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:textAppearance="?android:attr/textAppearanceMedium" android:id="@+id/Prenom"
+                              android:width="250dp"/>
+                    <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                  android:textAppearance="?android:attr/textAppearanceMedium" android:id="@+id/textView56"
+                                  android:width="40dp" android:text="Âge :"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                  android:textAppearance="?android:attr/textAppearanceMedium" android:id="@+id/Age"
+                                  android:width="30dp" android:paddingLeft="5dp"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                  android:textAppearance="?android:attr/textAppearanceMedium" android:id="@+id/textView55"
+                                  android:width="40dp" android:text="ans"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+            <TextView android:layout_width="350dp" android:layout_height="wrap_content"
+                      android:textAppearance="?android:attr/textAppearanceMedium" android:id="@+id/Adresse" android:width="250dp"
+                      android:height="50dp"/>
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:textAppearance="?android:attr/textAppearanceMedium" android:id="@+id/Ville" android:width="160dp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:textAppearance="?android:attr/textAppearanceMedium" android:id="@+id/CP"
+                          android:width="150dp"/>
+            </LinearLayout>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:textAppearance="?android:attr/textAppearanceMedium" android:id="@+id/Pays"
+                      android:width="250dp"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Genre musical"
+                    android:id="@+id/textView17" android:width="120dp"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:textAppearance="?android:attr/textAppearanceMedium" android:id="@+id/Genre"
+                      android:width="350dp"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="26dp"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Disponibilités"
+                    android:id="@+id/textView7" android:width="150dp"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:textAppearance="?android:attr/textAppearanceMedium" android:id="@+id/Dispo" android:width="340dp"
+                      android:height="40dp"/>
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" android:weightSum="1">
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Facebook"
+                        android:id="@+id/textView38" android:layout_weight="0.31" android:width="80dp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:textAppearance="?android:attr/textAppearanceMedium" android:id="@+id/Facebook"
+                          android:width="250dp"/>
+            </LinearLayout>
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:textAppearance="?android:attr/textAppearanceMedium" android:text="Site web"
+                          android:id="@+id/textView41" android:width="80dp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:textAppearance="?android:attr/textAppearanceMedium" android:id="@+id/Siteweb"
+                          android:width="250dp"/>
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent"
+                          android:layout_height="wrap_content">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:textAppearance="?android:attr/textAppearanceMedium" android:text="Tel fixe"
+                          android:id="@+id/textView42" android:width="80dp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:textAppearance="?android:attr/textAppearanceMedium" android:id="@+id/Fixe"
+                          android:width="250dp"/>
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent"
+                          android:layout_height="wrap_content">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:textAppearance="?android:attr/textAppearanceMedium" android:text="Mobile"
+                          android:id="@+id/textView43" android:width="80dp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:textAppearance="?android:attr/textAppearanceMedium" android:id="@+id/Mobile"
+                          android:width="250dp"/>
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent"
+                          android:layout_height="wrap_content">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:textAppearance="?android:attr/textAppearanceMedium" android:text="Email"
+                          android:id="@+id/textView44" android:width="80dp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:textAppearance="?android:attr/textAppearanceMedium" android:id="@+id/Email"
+                          android:width="250dp"/>
+
+            </LinearLayout>
+            <WebView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/webView"/>
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Editer mon profil"
+                    android:id="@+id/btneditProfil"
+                    android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" android:width="350dp"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

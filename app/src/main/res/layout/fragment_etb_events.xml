@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+        >
+    <LinearLayout  android:orientation="vertical"
+                   android:layout_width="fill_parent"
+                   android:layout_height="wrap_content"
+                   android:background="#eaeaea">
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false" android:weightSum="300" android:orientation="vertical"
+                    android:baselineAligned="true">
+                <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:gravity="center"
+                        >
+                    <ImageView
+                            android:id="@+id/imageView"
+                            android:layout_width="60dp"
+                            android:layout_height="40dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentTop="true"
+                            android:src="@drawable/icon_events"
+                            android:layout_alignParentBottom="true"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        >
+                    <LinearLayout android:layout_width="wrap_content"
+                                  android:layout_height="wrap_content"
+                                  android:orientation="horizontal"
+                                  android:id="@+id/l1"
+                            >
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="30dp"
+                                android:layout_marginTop="10dp"
+                                android:id="@+id/Textevent"
+                                android:text="Gérer mes évènements"
+                                android:layout_marginLeft="5dp"
+                                android:textStyle="bold"
+                                android:textColor="@color/orange"
+                                android:textSize="20dp"
+                                android:textAllCaps="true"
+                                />
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/middleProfil"
+                android:id="@+id/bottomProfil"
+                android:gravity="center"
+                android:layout_weight="1">
+
+            <Button
+                    android:id="@+id/btnAddEvent"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dip"
+                    android:background="@drawable/orange_button"
+                    android:text="@string/BtnAddEvents"
+                    style="@style/button_text" />
+
+        </LinearLayout>
+        <LinearLayout
+                android:id="@+id/l14"
+                android:layout_below="@+id/l13"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp">
+            <ImageView android:layout_width="30dp"
+                       android:src="@drawable/ic_liste_events"
+                       android:layout_height="wrap_content"
+                       android:layout_gravity="left"
+                       android:text="Liste des évènements"
+                       android:layout_marginRight="5dp"
+                    />
+            <ImageView android:layout_width="wrap_content"
+                       android:layout_height="30dp"
+                       android:src="@drawable/ic_vertical_trait"
+                       android:layout_gravity="left"
+                       android:layout_marginRight="5dp"
+                    />
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+                <TextView android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:id="@+id/Liste_events"
+                          android:text="Vous avez :"
+                          android:textStyle="bold"
+                          android:layout_marginTop="5dp"
+                          android:layout_marginLeft="5dp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:id="@+id/nbEvents" android:text="0"
+                          android:textStyle="bold" android:layout_marginTop="5dp" android:layout_marginLeft="20dp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:id="@+id/textView8" android:text="évènements" android:textStyle="bold"
+                          android:layout_marginTop="5dp" android:layout_marginLeft="20dp"/>
+            </LinearLayout>
+        </LinearLayout>
+        <ImageView android:layout_width="wrap_content" android:layout_height="match_parent"
+                   android:layout_gravity="center"
+                   android:src="@drawable/ic_trait"/>
+        <LinearLayout
+                android:id="@+id/l15"
+                android:layout_below="@+id/l14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp">
+            <ImageView android:layout_width="30dp"
+                       android:src="@drawable/ic_demande_inscription"
+                       android:layout_height="30dp"
+                       android:layout_gravity="left"
+                       android:layout_marginRight="5dp"
+                       android:text="Email"
+                    />
+            <ImageView android:layout_width="wrap_content"
+                       android:layout_height="30dp"
+                       android:src="@drawable/ic_vertical_trait"
+                       android:layout_gravity="left"
+                       android:layout_marginRight="5dp"
+                    />
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+                <TextView android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:id="@+id/txt12"
+                          android:text="Vous avez :"
+                          android:textStyle="bold"
+                          android:layout_marginTop="5dp"
+                          android:layout_marginLeft="5dp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:id="@+id/DemandeInscription" android:text="0 inscription" android:textStyle="bold"
+                          android:layout_marginTop="5dp" android:layout_marginLeft="5dp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="210dp"
+                    android:layout_below="@+id/bottomProfil"
+                    android:id="@+id/ListeEvents"
+                    android:layout_gravity="left|top"
+                    android:background="#eaeaeaea" android:layout_marginLeft="5dp" android:layout_marginRight="5dp"
+                    android:layout_marginTop="0dp">
+
+                <ListView android:id="@android:id/list"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_gravity="left|top" android:padding="5dp"
+                          android:clickable="true" android:textFilterEnabled="false"
+                          android:scrollbarStyle="insideOverlay"
+                          android:scrollbarAlwaysDrawVerticalTrack="true"
+                        />
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</ScrollView>
+
+

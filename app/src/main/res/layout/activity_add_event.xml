@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+        >
+    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
+                  android:orientation="vertical" android:background="#eaeaea">
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false" android:weightSum="300" android:orientation="vertical"
+                    android:baselineAligned="true">
+                <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:gravity="center"
+                        >
+                    <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent" android:background="#75b7b7b7"
+                            >
+                        <ImageView
+                                android:id="@+id/imageView"
+                                android:layout_width="35dp"
+                                android:layout_height="35dp"
+                                android:layout_alignParentBottom="true"
+                                android:layout_alignParentStart="true"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentTop="true"
+                                android:src="@drawable/icon_events"
+                                android:layout_marginLeft="20dp"/>
+                        <TextView
+                                android:layout_width="fill_parent"
+                                android:layout_height="30dp"
+                                android:layout_marginTop="10dp"
+                                android:id="@+id/Textevent"
+                                android:text="Créer un évènement"
+                                android:layout_marginLeft="20dp"
+                                android:textStyle="bold"
+                                android:textColor="@color/orange"
+                                android:textSize="20dp"
+                                android:textAllCaps="true"
+                                />
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+
+                <EditText
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:id="@+id/Titre" android:layout_margin="5dp" android:selectAllOnFocus="true"
+                        android:shadowColor="#ffd3d3d3" android:hint="Titre de l&apos;évènement&#42;"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+                <ImageView
+                        android:layout_width="43dp"
+                        android:layout_height="43dp"
+                        android:id="@+id/imageView4" android:layout_marginLeft="10dp"
+                        android:src="@drawable/ic_action_event"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:textAppearance="?android:attr/textAppearanceMedium" android:text="Date de l&apos;évènement :"
+                      android:id="@+id/textView65" android:gravity="center" android:layout_marginLeft="0dp"
+                          android:layout_marginTop="12dp"/>
+            </LinearLayout>
+            <EditText
+                    android:id="@+id/etxt_fromdate"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:hint="Date de début&#42;" />
+
+            <EditText
+                    android:id="@+id/etxt_todate"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:hint="Date de fin (si plusieurs jours)" android:layout_marginTop="5dp"/>
+
+
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+                <ImageView
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:id="@+id/imageView3" android:src="@drawable/ic_horaires"
+                        android:layout_marginLeft="5dp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:textAppearance="?android:attr/textAppearanceMedium" android:text="Horaires :"
+                      android:id="@+id/textView68" android:gravity="center" android:layout_marginLeft="0dp"
+                          android:layout_marginTop="10dp"/>
+            </LinearLayout>
+            <EditText android:id="@+id/HeureDebut" android:layout_width="fill_parent"
+                      android:layout_height="wrap_content" android:layout_weight=".5" android:hint="Heure de début&#42;"/>
+            <EditText android:id="@+id/HeureFin" android:layout_width="fill_parent"
+                      android:layout_height="wrap_content" android:layout_weight=".5" android:hint="Heure de fin&#42;"
+                      android:layout_marginTop="5dp"/>
+
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:textAppearance="?android:attr/textAppearanceMedium" android:text="Adresse de l'évènement&#42; :"
+                      android:id="@+id/textView62" android:gravity="center" android:layout_marginLeft="25dp"
+                      android:layout_margin="5dp"/>
+            <Spinner android:layout_width="fill_parent" android:layout_height="wrap_content"
+                     android:id="@+id/spinnerAdresse" android:layout_weight="1" android:gravity="center"
+                     android:layout_marginTop="5dp" android:textAlignment="center"/>
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" android:id="@+id/layout_hidden">
+                <EditText android:id="@+id/Adresse" android:layout_width="fill_parent"
+                              android:layout_height="wrap_content" android:hint="Adresse&#42;"
+                              android:visibility="invisible"/>
+                <EditText android:id="@+id/Cp" android:layout_width="fill_parent"
+                              android:layout_height="wrap_content" android:hint="Code Postal&#42;"
+                              android:visibility="invisible"/>
+                <EditText android:id="@+id/Ville" android:layout_width="fill_parent" android:layout_height="wrap_content"
+                          android:hint="Ville&#42;" android:visibility="invisible"/>
+                <EditText android:id="@+id/Pays" android:layout_width="fill_parent"
+                              android:layout_height="wrap_content" android:hint="Pays&#42;"
+                              android:visibility="invisible"/>
+            </LinearLayout>
+
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:textAppearance="?android:attr/textAppearanceMedium" android:text="Description&#42; : "
+                      android:id="@+id/textView64" android:gravity="center" android:layout_marginLeft="25dp"
+                      android:layout_margin="5dp"/>
+            <EditText
+                    android:layout_width="fill_parent"
+                    android:layout_height="100dp"
+                    android:inputType="textMultiLine"
+                    android:ems="10"
+                    android:id="@+id/Description" android:hint="(180 carac. max)" android:layout_marginLeft="5dp" android:layout_marginRight="5dp"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  android:textAppearance="?android:attr/textAppearanceMedium" android:text="Statut du recrutement&#42; :"
+                  android:id="@+id/textView63" android:gravity="center" android:layout_marginLeft="25dp"
+                      android:layout_margin="5dp"/>
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent"
+                      android:layout_height="fill_parent">
+            <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/spinnerStatut" android:layout_weight="1" android:gravity="center"
+                    android:layout_margin="5dp"/>
+        </LinearLayout>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_below="@+id/spinnerAge"
+                    android:layout_marginTop="25dp"
+                    android:text="Genre Musical&#42; (au moins un genre)"
+                    android:id="@+id/textView31"/>
+
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" android:layout_weight="6.67">
+
+                <CheckBox
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:text="Rock"
+                        android:id="@+id/rock" android:layout_weight="6.52" android:layout_marginLeft="10dp"/>
+
+                <CheckBox
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:text="Jazz"
+                        android:id="@+id/jazz" android:layout_weight="6.52"/>
+            </LinearLayout>
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" android:layout_weight="6.67">
+                <CheckBox
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:text="Métal"
+                        android:id="@+id/metal" android:layout_weight="6.52" android:layout_marginLeft="10dp"/>
+                <CheckBox
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:text="Pop"
+                        android:id="@+id/pop" android:layout_weight="6.52"/>
+            </LinearLayout>
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" android:layout_weight="6.67">
+                <CheckBox
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:text="Électro"
+                        android:id="@+id/electro" android:layout_weight="6.52" android:layout_marginLeft="10dp"/>
+                <CheckBox
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:text="Blues"
+                        android:id="@+id/blues" android:layout_weight="6.52"/>
+            </LinearLayout>
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" android:layout_weight="6.67">
+                <CheckBox
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:text="Classique"
+                        android:id="@+id/classique" android:layout_weight="6.52" android:layout_marginLeft="10dp"/>
+                <CheckBox
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:text="Funk"
+                        android:id="@+id/funk" android:layout_weight="6.52"/>
+            </LinearLayout>
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" android:layout_weight="6.67">
+                <CheckBox
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:text="Folk"
+                        android:id="@+id/folk" android:layout_weight="6.52" android:layout_marginLeft="10dp"/>
+                <CheckBox
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:text="Rap"
+                        android:id="@+id/rap" android:layout_weight="6.52"/>
+            </LinearLayout>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:textAppearance="?android:attr/textAppearanceMedium" android:text="Page facebook : "
+                      android:id="@+id/textView66" android:gravity="center" android:layout_marginLeft="25dp"
+                      android:layout_margin="5dp"/>
+            <EditText android:layout_width="match_parent" android:layout_height="match_parent"
+                      android:ems="10" android:id="@+id/Facebook" android:layout_marginLeft="5dp"
+                      android:layout_marginRight="5dp" android:inputType="text"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:textAppearance="?android:attr/textAppearanceMedium" android:text="Site web : "
+                      android:id="@+id/textView67" android:gravity="center" android:layout_marginLeft="25dp"
+                      android:layout_margin="5dp"/>
+            <EditText android:layout_width="match_parent" android:layout_height="match_parent" android:ems="10"
+                      android:id="@+id/Siteweb" android:layout_marginLeft="5dp" android:layout_marginRight="5dp"
+                      android:inputType="text"/>
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+                <ImageView
+                        android:id="@+id/imgView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" >
+                </ImageView>
+
+                <Button
+                        android:id="@+id/buttonLoadPicture"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="0"
+                        android:onClick="loadImagefromGallery"
+                        android:text="Load Picture" >
+                </Button>
+            </LinearLayout>
+            <TextView android:layout_width="fill_parent" android:layout_height="wrap_content"
+                      android:textAppearance="?android:attr/textAppearanceMedium" android:text="&#42;informations obligatoires"
+                      android:id="@+id/textView69"
+                      android:textSize="13sp" android:gravity="right"
+                      android:textStyle="italic" android:layout_marginRight="25dp" android:layout_marginTop="10dp"
+                      android:layout_marginBottom="10dp" android:textColor="#ff970200"/>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_below="@+id/bottomProfil"
+                android:id="@+id/layoutVoirEvent"
+                android:gravity="center"
+                android:layout_weight="1">
+
+            <Button
+                    android:id="@+id/btnCreateEvent"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dip"
+                    android:background="@drawable/orange_button"
+                    android:text="Créer mon évènement"
+                    style="@style/button_text" />
+
+        </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</ScrollView>
+
+
