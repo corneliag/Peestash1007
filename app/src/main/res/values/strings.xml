@@ -40,7 +40,7 @@
         <item>@drawable/icon_profil</item>
         <item>@drawable/icon_events</item>
         <item>@drawable/icon_ask</item>
-        <item>@drawable/ic_favoris_plein_icon</item>
+        <item>@drawable/ic_hover_favoris</item>
     </array>
     <!-- Nav Drawer Menu Items Artistes-->
     <string-array name="nav_artist_items">
@@ -55,7 +55,7 @@
         <item>@drawable/icon_home</item>
         <item>@drawable/icon_profil</item>
         <item>@drawable/job_postulate</item>
-        <item>@drawable/ic_favoris_plein_icon</item>
+        <item>@drawable/ic_hover_favoris</item>
     </array>
 
 
