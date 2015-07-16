@@ -166,9 +166,5 @@
                     style="@style/button_text"/>
 
 
-                <TextView android:layout_width="match_parent" android:layout_height="match_parent"
-                          android:gravity="right"
-                          android:text="@string/requiredFields"/>
-
         </LinearLayout>
 </ScrollView>

@@ -477,7 +477,7 @@ public class FavorisEtbFragment extends Fragment {
             @Override
             public void onClick(View arg0) {
 
-                DeleteEtbFavoriteTask(artist_id.get(i).toString());
+                DeleteEtbFavoriteTask(artist_id.get(i).toString(), id_user);
                 Toast.makeText(getActivity(), "Supprime de vos favoris !", Toast.LENGTH_LONG).show();
                 // Reload current fragment
                 Fragment frg = new FavorisEtbFragment();
@@ -532,7 +532,7 @@ public class FavorisEtbFragment extends Fragment {
             startActivity(intent);
         }
     }
-    protected void DeleteEtbFavoriteTask(String id_artist) {
+    protected void DeleteEtbFavoriteTask(String id_artist, String id_etablissement) {
 
         tag = "delete_artist_favoris";
         InputStream is = null;
@@ -543,6 +543,7 @@ public class FavorisEtbFragment extends Fragment {
         //adding string variables into the NameValuePairs
         nameValuePairs.add(new BasicNameValuePair("tag", tag));
         nameValuePairs.add(new BasicNameValuePair("id_artist", id_artist));
+        nameValuePairs.add(new BasicNameValuePair("id_etablissement", id_etablissement));
 
 
         try {

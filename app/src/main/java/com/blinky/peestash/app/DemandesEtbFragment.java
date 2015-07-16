@@ -10,15 +10,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.blinky.peestash.app.R;
 
-public class NotifFragment extends Fragment {
+public class DemandesEtbFragment extends Fragment {
 
-    public NotifFragment(){}
+    public DemandesEtbFragment(){}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.fragment_notif, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_etb_demandes, container, false);
 
         return rootView;
     }

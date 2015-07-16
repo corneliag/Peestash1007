@@ -9,12 +9,12 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:textSize="16dp"
-            android:text="Notifications"/>
+            android:text="Demandes"/>
 
     <ImageView android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:layout_below="@id/txtLabel"
-               android:src="@drawable/icon_messages"
+               android:src="@drawable/icon_ask"
                android:layout_centerHorizontal="true"
                android:layout_marginTop="10dp"/>
 

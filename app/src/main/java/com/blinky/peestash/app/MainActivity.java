@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.*;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -85,11 +86,11 @@ public class MainActivity extends Activity implements UploadFragment.OnFragmentI
         mTitle = mDrawerTitle = getTitle();
 
         // load slide menu items
-        navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);
+        navMenuTitles = getResources().getStringArray(R.array.nav_artist_items);
 
         // nav drawer icons from resources
         navMenuIcons = getResources()
-                .obtainTypedArray(R.array.nav_drawer_icons);
+                .obtainTypedArray(R.array.nav_artist_icons);
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.list_slidermenu);
@@ -108,10 +109,10 @@ public class MainActivity extends Activity implements UploadFragment.OnFragmentI
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(3, -1)));
 
         // Pages
-        navDrawerItems.add(new NavDrawerItem(navMenuTitles[4], navMenuIcons.getResourceId(4, -1)));
+       // navDrawerItems.add(new NavDrawerItem(navMenuTitles[4], navMenuIcons.getResourceId(4, -1)));
         // What's hot, We  will add a counter here
-        navDrawerItems.add(new NavDrawerItem(navMenuTitles[5], navMenuIcons.getResourceId(5, -1)));
-        navDrawerItems.add(new NavDrawerItem(navMenuTitles[6], navMenuIcons.getResourceId(6, -1)));
+        //navDrawerItems.add(new NavDrawerItem(navMenuTitles[5], navMenuIcons.getResourceId(5, -1)));
+        //navDrawerItems.add(new NavDrawerItem(navMenuTitles[6], navMenuIcons.getResourceId(6, -1)));
         //navDrawerItems.add(new NavDrawerItem(navMenuTitles[7], navMenuIcons.getResourceId(7, -1)));
 
 
@@ -133,8 +134,8 @@ public class MainActivity extends Activity implements UploadFragment.OnFragmentI
 
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
                 R.drawable.ic_drawer, //nav menu toggle icon
-                R.string.app_name, // nav drawer open - description for accessibility
-                R.string.app_name // nav drawer close - description for accessibility
+                R.string.drawer_open, // nav drawer open - description for accessibility
+                R.string.drawer_close // nav drawer close - description for accessibility
         ) {
             public void onDrawerClosed(View view) {
                 getActionBar().setTitle(mTitle);
@@ -272,6 +273,30 @@ public class MainActivity extends Activity implements UploadFragment.OnFragmentI
             }
         });
 
+        MenuItem logoutItem = menu.findItem(R.id.action_logout);
+       logoutItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+           @Override
+           public boolean onMenuItemClick(MenuItem menuItem) {
+
+               AlertDialog.Builder alertDialog  = new AlertDialog.Builder(MainActivity.this);
+
+               alertDialog.setMessage("Voulez-vous vraiment vous deconnecter ?")
+                       .setCancelable(false)
+                       .setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+                           public void onClick(DialogInterface dialog, int id) {
+                               Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                               intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                               intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                               startActivity(intent);
+
+                           }
+                       })
+                       .setNegativeButton("Non", null)
+                       .show();
+
+               return false;
+           }
+       });
         return true;
     }
 
@@ -318,23 +343,11 @@ public class MainActivity extends Activity implements UploadFragment.OnFragmentI
                 break;
 
             case 2:
-                fragment = new EventsFragment();
+                fragment = new CandidaturesFragment();
                 break;
             case 3:
-                fragment = new NotifFragment();
-                break;
-            case 4:
                 fragment = new FavorisFragment();
-                //fragment = new OptionsFragment();
                 break;
-            case 5:
-                fragment = new LogoutFragment();
-
-                break;
-           case 6:
-                fragment = new SupprimerFragment();
-                break;
-
             default:
                 break;
         }

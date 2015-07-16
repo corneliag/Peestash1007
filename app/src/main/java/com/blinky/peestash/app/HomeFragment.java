@@ -62,7 +62,11 @@ public class HomeFragment extends Fragment {
     ImageView imgTwitter;
     ImageView imgSite;
     ImageView btnFavoris;
+    List<String> EtbId;
+    List<String> ArtistId;
 
+    ShowAllEtbFavoris favorisTask;
+    String etb, art;
 
     private LinearLayout listeEvents;
     private int layoutHeight, i=0;
@@ -74,7 +78,6 @@ public class HomeFragment extends Fragment {
     String id_artist;
 
     String idEtablissement;
-    ShowAllEventsTask eventsTask;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -119,12 +122,8 @@ public class HomeFragment extends Fragment {
             }
         }).start();
 
-        eventsTask = new ShowAllEventsTask();
-        StartAsyncTaskInParallel(eventsTask);
-
-
-
-
+        favorisTask = new ShowAllEtbFavoris();
+        StartAsyncTaskInParallel(favorisTask);
 
         final GestureDetector gesture = new GestureDetector(getActivity(),
                 new GestureDetector.SimpleOnGestureListener() {
@@ -484,18 +483,7 @@ public class HomeFragment extends Fragment {
     protected void afficheProfilContent(final int i)
     {
 
-        Log.e("event ", etablissement_id.get(i).toString());
-
         idEtablissement = etablissement_id.get(i).toString();
-        new Thread(new Runnable() {
-            public void run() {
-                getActivity().runOnUiThread(new Runnable() {
-                    public void run() {
-                        new ShowAllEventsTask().execute();
-                    }
-                });
-            }
-        }).start();
 
         Email.setText(email.get(i).toString());
         Nom.setText(nom.get(i).toString());
@@ -518,9 +506,12 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View arg0) {
 
-                AddEtbFavoriteTask(etablissement_id.get(i).toString(), id_artist);
-                Toast.makeText(getActivity(), "Ajoute a vos favoris !", Toast.LENGTH_LONG).show();
-
+                if(EtbId.contains(etablissement_id.get(i).toString()) && ArtistId.contains(id_artist)){
+                    Toast.makeText(getActivity(), "Cet etablissement existe deja dans vos favoris !", Toast.LENGTH_LONG).show();
+                }else{
+                    AddEtbFavoriteTask(etablissement_id.get(i).toString(), id_artist);
+                    Toast.makeText(getActivity(), "Ajoute a vos favoris ! ", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -550,11 +541,6 @@ public class HomeFragment extends Fragment {
             img.setImageDrawable(getResources().getDrawable(R.drawable.ic_profil_etb));
 
         }
-
-
-        afficheAllEventsResume(i);
-
-    list.setAdapter(adapter);
 
     }
     public void insertContact(String name, String email, String tel) {
@@ -617,14 +603,12 @@ public class HomeFragment extends Fragment {
             Toast.makeText(getActivity(), msg, Toast.LENGTH_LONG).show();
         }
 
-
-
     }
 
-    private class ShowAllEventsTask extends AsyncTask<Void, Void, InputStream> {
+    private class ShowAllEtbFavoris extends AsyncTask<Void, Void, InputStream> {
 
         String result = null;
-        String tag = "read_AllEtablissementEvents";
+        String tag = "check_etb_favoris";
         InputStream is = null;
         List<NameValuePair> nameValuePairs;
 
@@ -633,7 +617,7 @@ public class HomeFragment extends Fragment {
             nameValuePairs = new ArrayList<NameValuePair>(1);
             //adding string variables into the NameValuePairs
             nameValuePairs.add(new BasicNameValuePair("tag", tag));
-            nameValuePairs.add(new BasicNameValuePair("id_etablissement", idEtablissement));
+            nameValuePairs.add(new BasicNameValuePair("id_artist", id_artist));
 
             //setting the connection to the database
             try {
@@ -671,9 +655,7 @@ public class HomeFragment extends Fragment {
         }
 
         protected void onPreExecute() {
-            progress = new ProgressDialog(getActivity());
-           // progress.setMessage("Chargement de la liste des évènements...");
-           // progress.show();
+
         }
 
         protected void onPostExecute(InputStream is) {
@@ -688,66 +670,44 @@ public class HomeFragment extends Fragment {
                 // Access by key : value
                 nbreponse = finalResult.length();
                 String nb = String.valueOf(nbreponse);
-                System.out.println("nb reponse evenements"+ nb);
-                Nb_events.setText(nb);
+                System.out.println("nb reponse "+ nb);
 
-
-                titre = new ArrayList<String>(nbreponse);
-                ville = new ArrayList<String>(nbreponse);
-                pays = new ArrayList<String>(nbreponse);
-                date_debut = new ArrayList<String>(nbreponse);
-                imgUrl = new ArrayList<String>(nbreponse);
-                genre_musical = new ArrayList<String>(nbreponse);
-                statut_recrutement = new ArrayList<String>(nbreponse);
+                EtbId = new ArrayList<String>(nbreponse);
+                ArtistId = new ArrayList<String>(nbreponse);
 
                 for (i = 0; i < finalResult.length(); i++) {
 
                     JSONObject element = finalResult.getJSONObject(i);
 
-
-                    titre.add(element.getString("titre"));
-                    date_debut.add(element.getString("date_debut"));
-                    ville.add(element.getString("ville"));
-                    pays.add(element.getString("pays"));
-                    imgUrl.add(element.getString("img_url"));
-                    genre_musical.add(element.getString("genre_musical"));
-                    statut_recrutement.add(element.getString("statut_recrutement"));
+                    EtbId.add(element.getString("id_etablissement"));
+                    ArtistId.add(element.getString("id_artist"));
 
                 }
 
+                i=0;
+                for (i = 0; i < finalResult.length(); i++) {
+                    etb = EtbId.get(i).toString();
+                    art = ArtistId.get(i).toString();
 
-                /*for(i=0;i<finalResult.length();i++) {
+                    //Toast.makeText(getActivity(), etb + " " +art, Toast.LENGTH_LONG).show();
 
-
-                   afficheAllEventsResume(i);
                 }
-                list.setAdapter(adapter);*/
+
 
                 is.close();
 
             } catch (Exception e) {
                 Log.i("tagconvertstr", "" + e.toString());
             }
-            if (progress.isShowing()) {
-                progress.dismiss();
-            }
 
         }
     }
-    protected void afficheAllEventsResume(int i)
-    {
-
-        arrayList.add(titre.get(i).toString().toUpperCase()+"\n"+"Date : "+date_debut.get(i).toString()
-                +"\n"+ville.get(i).toString().toUpperCase()+", "+pays.get(i).toString().toUpperCase()
-                +"\n"+"Genre : "+genre_musical.get(i).toString().replace(String.valueOf("["), "").replace(String.valueOf("]"), "")
-                +"\n"+"Statut du recrutement : "+statut_recrutement.get(i).toString());
-        list.setAdapter(adapter);
-    }
-    private void StartAsyncTaskInParallel(ShowAllEventsTask task) {
+    private void StartAsyncTaskInParallel(ShowAllEtbFavoris task) {
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
             task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
         else
             task.execute();
     }
+
 
 }

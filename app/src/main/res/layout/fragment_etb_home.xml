@@ -28,16 +28,6 @@
                            android:layout_marginTop="10dp"
                            android:layout_gravity="right"
                            android:src="@drawable/ic_favoris_plein_icon"/>
-                <TextView android:layout_width="wrap_content"
-                          android:layout_height="wrap_content"
-                          android:id="@+id/etablissement"
-                          android:text="pas defini"
-                        />
-                <TextView android:layout_width="wrap_content"
-                          android:layout_height="wrap_content"
-                          android:id="@+id/artist"
-                          android:text="pas defini"
-                        />
 
                 <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp"

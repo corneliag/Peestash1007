@@ -1,6 +1,8 @@
 package com.blinky.peestash.app;
 
 import android.app.*;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -103,9 +105,9 @@ UploadFragment.OnFragmentInteractionListener, EditEventFragment.OnFragmentIntera
         // Pages
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[4], navMenuIcons.getResourceId(4, -1)));
         // What's hot, We  will add a counter here
-        navDrawerItems.add(new NavDrawerItem(navMenuTitles[5], navMenuIcons.getResourceId(5, -1)));
+        //navDrawerItems.add(new NavDrawerItem(navMenuTitles[5], navMenuIcons.getResourceId(5, -1)));
 
-       navDrawerItems.add(new NavDrawerItem(navMenuTitles[6], navMenuIcons.getResourceId(6, -1)));
+      // navDrawerItems.add(new NavDrawerItem(navMenuTitles[6], navMenuIcons.getResourceId(6, -1)));
         //navDrawerItems.add(new NavDrawerItem(navMenuTitles[7], navMenuIcons.getResourceId(7, -1)));
 
         // Recycle the typed array
@@ -125,8 +127,8 @@ UploadFragment.OnFragmentInteractionListener, EditEventFragment.OnFragmentIntera
 
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
                 R.drawable.ic_drawer, //nav menu toggle icon
-                R.string.app_name, // nav drawer open - description for accessibility
-                R.string.app_name // nav drawer close - description for accessibility
+                R.string.drawer_open, // nav drawer open - description for accessibility
+                R.string.drawer_close // nav drawer close - description for accessibility
         ) {
             public void onDrawerClosed(View view) {
                 getActionBar().setTitle(mTitle);
@@ -262,6 +264,31 @@ UploadFragment.OnFragmentInteractionListener, EditEventFragment.OnFragmentIntera
             }
         });
 
+        MenuItem logoutItem = menu.findItem(R.id.action_logout);
+        logoutItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+
+                AlertDialog.Builder alertDialog  = new AlertDialog.Builder(MainEtbActivity.this);
+
+                alertDialog.setMessage("Voulez-vous vraiment vous deconnecter ?")
+                        .setCancelable(false)
+                        .setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                Intent intent = new Intent(MainEtbActivity.this, LoginActivity.class);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                startActivity(intent);
+
+                            }
+                        })
+                        .setNegativeButton("Non", null)
+                        .show();
+
+                return false;
+            }
+        });
+
         return true;
     }
 
@@ -310,16 +337,10 @@ UploadFragment.OnFragmentInteractionListener, EditEventFragment.OnFragmentIntera
                 fragment = new EventsEtbFragment();
                 break;
             case 3:
-                fragment = new NotifEtbFragment();
+                fragment = new DemandesEtbFragment();
                 break;
             case 4:
                 fragment = new FavorisEtbFragment();
-                break;
-            case 5:
-                fragment = new LogoutEtbFragment();
-                break;
-            case 6:
-                fragment = new SupprimerEtbFragment();
                 break;
 
             default:

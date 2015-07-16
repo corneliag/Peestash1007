@@ -27,14 +27,11 @@
     <!-- Nav Drawer Menu Items -->
     <string-array name="nav_drawer_items">
         <item>Accueil</item>
-        <item>Mon profil</item>
-        <item>Mes événements</item>
-        <item>Mes demandes</item>
-        <item>Mes favoris</item>
-        <item>Déconnexion</item>
-        <item>Supprimer mon compte</item>
+        <item>Profil</item>
+        <item>Evénements</item>
+        <item>Demandes</item>
+        <item>Favoris</item>
     </string-array>
-
 
     <!-- Nav Drawer List Item Icons -->
     <!-- Keep them in order as the titles are in -->
@@ -42,16 +39,31 @@
         <item>@drawable/icon_home</item>
         <item>@drawable/icon_profil</item>
         <item>@drawable/icon_events</item>
-        <item>@drawable/icon_messages</item>
+        <item>@drawable/icon_ask</item>
         <item>@drawable/ic_favoris_plein_icon</item>
-        <item>@drawable/icon_lougout</item>
-        <item>@drawable/icon_supprimer</item>
     </array>
+    <!-- Nav Drawer Menu Items Artistes-->
+    <string-array name="nav_artist_items">
+        <item>Accueil</item>
+        <item>Profil</item>
+        <item>Candidatures</item>
+        <item>Favoris</item>
+    </string-array>
+
+    <!-- icons menu Artists-->
+    <array name="nav_artist_icons">
+        <item>@drawable/icon_home</item>
+        <item>@drawable/icon_profil</item>
+        <item>@drawable/job_postulate</item>
+        <item>@drawable/ic_favoris_plein_icon</item>
+    </array>
+
+
 
     <!-- Content Description -->
     <string name="desc_list_item_icon">Item Icon</string>
-    <string name="title_activity_main">Menu artiste</string>
-    <string name="title_activity_etb_main">Menu etablissement</string>
+    <string name="title_activity_main"> </string>
+    <string name="title_activity_etb_main"> </string>
     <string name="btnEditProfil">Modifier mes informations</string>
     <string name="title_activity_upload">UploadActivity</string>
     <string name="title_activity_slide">Peestash</string>
@@ -83,34 +95,34 @@
 
     </string>
     <string name="enregistContact"><u>Enregistrer</u></string>
-    <string name="votreNomScene">Votre nom de scène<b><font color="red">*</font></b></string>
-    <string name="email">Votre E-mail<b><font color="red">*</font></b></string>
-    <string name="confEmail">Confirmez votre e-mail<b><font color="red">*</font></b></string>
-    <string name="mdp">Votre mot de passe<b><font color="red">*</font></b></string>
-    <string name="confMdp">Confirmez votre mot de passe<b><font color="red">*</font></b></string>
-    <string name="nomEtb">Votre nom d\'établissement<b><font color="red">*</font></b></string>
-    <string name="emailEtb">Votre e-mail<b><font color="red">*</font></b></string>
-    <string name="confEmailEtb">Confirmez votre e-mail<b><font color="red">*</font></b></string>
-    <string name="mdpEtb">Votre mot de passe<b><font color="red">*</font></b></string>
-    <string name="confMdpEtb">Confirmez votre mot de passe<b><font color="red">*</font></b></string>
-    <string name="nomScene">Nom de scène<b><font color="red">*</font></b></string>
-    <string name="adress">Adresse<b><font color="red">*</font></b></string>
-    <string name="codePostal">Code Postal<b><font color="red">*</font></b></string>
-    <string name="Ville">Ville<b><font color="red">*</font></b></string>
-    <string name="Nom">Nom<b><font color="red">*</font></b></string>
-    <string name="Prenom">Prénom<b><font color="red">*</font></b></string>
-    <string name="Age">Âge<b><font color="red">*</font></b></string>
-    <string name="typeArtist">Vous êtes :<b><font color="red">*</font></b></string>
-    <string name="genreMusical">Genre Musical<b><font color="red">*</font></b></string>
-    <string name="Pays">Pays<b><font color="red">*</font></b></string>
+    <string name="votreNomScene">Votre nom de scène</string>
+    <string name="email">Votre E-mail</string>
+    <string name="confEmail">Confirmez votre e-mail</string>
+    <string name="mdp">Votre mot de passe</string>
+    <string name="confMdp">Confirmez votre mot de passe</string>
+    <string name="nomEtb">Votre nom d\'établissement</string>
+    <string name="emailEtb">Votre e-mail</string>
+    <string name="confEmailEtb">Confirmez votre e-mail</string>
+    <string name="mdpEtb">Votre mot de passe</string>
+    <string name="confMdpEtb">Confirmez votre mot de passe</string>
+    <string name="nomScene">Nom de scène</string>
+    <string name="adress">Adresse</string>
+    <string name="codePostal">Code Postal</string>
+    <string name="Ville">Ville</string>
+    <string name="Nom">Nom</string>
+    <string name="Prenom">Prénom</string>
+    <string name="Age">Âge</string>
+    <string name="typeArtist">Vous êtes :</string>
+    <string name="genreMusical">Genre Musical</string>
+    <string name="Pays">Pays</string>
     <string name="telFixe">Tel Fixe</string>
-    <string name="telMobile">Tel Mobile<b><font color="red">*</font></b></string>
-    <string name="Dispos">Mes disponibilités<b><font color="red">*</font></b></string>
-    <string name="idPlaylist">ID de votre playlist Soundcloud<b><font color="red">*</font></b></string>
-    <string name="siteWeb">Site Web<b><font color="red">*</font></b></string>
-    <string name="facebook">Facebook<b><font color="red">*</font></b></string>
-    <string name="twitter">Twitter<b><font color="red">*</font></b></string>
-    <string name="VotreEmail">Votre E-mail<b><font color="red">*</font></b></string>
+    <string name="telMobile">Tel Mobile</string>
+    <string name="Dispos">Mes disponibilités</string>
+    <string name="idPlaylist">ID de votre playlist Soundcloud</string>
+    <string name="siteWeb">Site Web</string>
+    <string name="facebook">Facebook</string>
+    <string name="twitter">Twitter</string>
+    <string name="VotreEmail">Votre E-mail</string>
     <string name="modifEmail">Modifier votre e-mail</string>
     <string name="modifMdp">Modifier votre mot de passe</string>
     <string name="confirmMdp">Confirmez votre mot de passe</string>
@@ -118,7 +130,7 @@
     <string name="cgu">*J\'ai lu et j\'accepte les CGU</string>
     <string name="facebook_app_id">335426429995872</string>
     <string name="modifProfil"><u>Modifier</u></string>
-    <string name="string_user_name">Bonjour %1$s</string>
+    <string name="string_user_name">Hello %1$s</string>
     <string name="title_activity_searchable">SearchableActivity</string>
     <string name="title_activity_edit_event">Editer mon évènement</string>
 

@@ -11,4 +11,9 @@
             android:title="@string/string_user_name"
             android:showAsAction="ifRoom|withText"
             />
+
+    <item android:id="@+id/action_logout"
+          android:icon="@drawable/action_logout_btn"
+          android:showAsAction="always"
+          android:title="@string/logout" />
 </menu>

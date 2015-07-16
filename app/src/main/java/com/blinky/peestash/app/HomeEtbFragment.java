@@ -78,6 +78,7 @@ public class HomeEtbFragment extends Fragment {
     ImageView imgSite;
     String id_artist, msg;
     ImageView btnFavoris;
+    private ArrayList<String> listFavoris;
 
     String id_etablissement;
 
@@ -87,6 +88,7 @@ public class HomeEtbFragment extends Fragment {
     ShowAllEtbFavoris favorisTask;
 
     private TextView EtbFavoris, ArtistFavoris;
+    String etb, art;
 
 
     @Override
@@ -115,9 +117,6 @@ public class HomeEtbFragment extends Fragment {
         Type_artiste = (TextView) rootView.findViewById(R.id.Type_artiste);
         img = (ImageView) rootView.findViewById(R.id.imageView);
         wv = (WebView) rootView.findViewById(R.id.webView);
-
-        EtbFavoris = (TextView) rootView.findViewById(R.id.etablissement);
-        ArtistFavoris = (TextView) rootView.findViewById(R.id.artist);
 
         new Thread(new Runnable() {
             public void run() {
@@ -528,9 +527,7 @@ public class HomeEtbFragment extends Fragment {
         Type_artiste.setText(type_artiste.get(i).toString());
         Facebook.setText(facebook.get(i).toString());
         Twitter.setText(twitter.get(i).toString());
-        // Toast.makeText(getActivity(), "artist id: "+artist_id.get(i).toString(), Toast.LENGTH_LONG).show();
 
-        //id_artist = artist_id.get(i).toString();
 
 
         btnFavoris.setOnClickListener(new View.OnClickListener() {
@@ -538,11 +535,13 @@ public class HomeEtbFragment extends Fragment {
             @Override
             public void onClick(View arg0) {
 
-                AddArtistFavoriteTask(artist_id.get(i).toString(), id_etablissement);
-                // Toast.makeText(getActivity(), "id etb" + id_etablissement, Toast.LENGTH_LONG).show();
-                Toast.makeText(getActivity(), "Ajoute a vos favoris !", Toast.LENGTH_LONG).show();
-
-            }
+                if(ArtistId.contains(artist_id.get(i).toString()) && EtbId.contains(id_etablissement)){
+                    Toast.makeText(getActivity(), "Cet artiste existe deja dans vos favoris !", Toast.LENGTH_LONG).show();
+                }else{
+                    AddArtistFavoriteTask(artist_id.get(i).toString(), id_etablissement);
+                    Toast.makeText(getActivity(), "Ajoute a vos favoris ! ", Toast.LENGTH_LONG).show();
+                }
+              }
         });
 
         if (telfixe.get(i).toString().equals("0")) {
@@ -575,7 +574,8 @@ public class HomeEtbFragment extends Fragment {
             wv.loadDataWithBaseURL("", html, "text/html", "UTF-8", "");
 
         }
-        afficherFavoris(i);
+      //  afficherFavoris(i);
+
     }
 
     public void insertContact(String name, String email, String tel) {
@@ -717,7 +717,19 @@ public class HomeEtbFragment extends Fragment {
 
                    EtbId.add(element.getString("id_etablissement"));
                    ArtistId.add(element.getString("id_artist"));
+
                 }
+
+                i=0;
+                for (i = 0; i < finalResult.length(); i++) {
+                    etb = EtbId.get(i).toString();
+                    art = ArtistId.get(i).toString();
+
+                    //Toast.makeText(getActivity(), etb + " " +art, Toast.LENGTH_LONG).show();
+
+                }
+
+
                 is.close();
 
             } catch (Exception e) {
@@ -733,9 +745,4 @@ public class HomeEtbFragment extends Fragment {
             task.execute();
     }
 
-    protected  void afficherFavoris(int i) {
-
-       EtbFavoris.setText(EtbId.get(i).toString());
-        ArtistFavoris.setText(ArtistId.get(i).toString());
-    }
 }
