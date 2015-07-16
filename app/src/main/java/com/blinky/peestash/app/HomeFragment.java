@@ -492,7 +492,7 @@ public class HomeFragment extends Fragment {
 
         //Appel à la fonction permettant l'affichage de l'établissement
         /**************/
-        getEtb(etablissement_id.get(i).toString());
+        getEvent(etablissement_id.get(i).toString());
         /**************/
 
         Email.setText(email.get(i).toString());
@@ -721,9 +721,9 @@ public class HomeFragment extends Fragment {
     }
 
 
-
+////----------------------------------à voir -------------------------------------------------/////////////////////
 //Traitement de l'affichage des evenements en fonction de l'id_etablissement
-    protected  void getEtb(String id_etablissement)
+    protected  void getEvent(String id_etablissement)
     {
         String result = null;
         String tag = "read_AllEtablissementEvents";
@@ -828,4 +828,6 @@ public class HomeFragment extends Fragment {
                 + "\n" + "Statut du recrutement : " + statut_recrutementEvent.get(i).toString());
 
     }
+
+    ////----------------------------------à voir -------------------------------------------------/////////////////////
 }
