@@ -139,5 +139,6 @@
             <item>Pop</item>
             <item>Jazz</item>
     </string-array>
+   <string name="notif">Vous avez une demande de %1$s </string>
 
 </resources>

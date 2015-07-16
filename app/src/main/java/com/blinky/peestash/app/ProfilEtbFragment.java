@@ -114,14 +114,14 @@ public class ProfilEtbFragment extends Fragment {
 
         //gestion des onglets
         final Button testtab1 = (Button) rootView.findViewById(R.id.testtab1);
-        final Button testtab2 = (Button) rootView.findViewById(R.id.testtab2);
+        //final Button testtab2 = (Button) rootView.findViewById(R.id.testtab2);
         final Button testtab3 = (Button) rootView.findViewById(R.id.testtab3);
 
         final LinearLayout propLayout1 = (LinearLayout) rootView.findViewById(R.id.properLayout1);
-        final LinearLayout propLayout2 = (LinearLayout) rootView.findViewById(R.id.properLayout2);
+        //final LinearLayout propLayout2 = (LinearLayout) rootView.findViewById(R.id.properLayout2);
         final LinearLayout propLayout3 = (LinearLayout) rootView.findViewById(R.id.properLayout3);
         testtab1.setPressed(true);
-        testtab2.setPressed(false);
+        //testtab2.setPressed(false);
         testtab3.setPressed(false);
 
         testtab1.setOnTouchListener
@@ -130,18 +130,18 @@ public class ProfilEtbFragment extends Fragment {
                             @Override
                             public boolean onTouch(View v, MotionEvent event) {
                                 testtab1.setPressed(true);
-                                testtab2.setPressed(false);
+                                //testtab2.setPressed(false);
                                 testtab3.setPressed(false);
 
                                 propLayout1.setVisibility(View.VISIBLE);
-                                propLayout2.setVisibility(View.INVISIBLE);
+                               // propLayout2.setVisibility(View.INVISIBLE);
                                 propLayout3.setVisibility(View.INVISIBLE);
 
                                 return true;
                             }
                         }
                 );
-        testtab2.setOnTouchListener
+       /* testtab2.setOnTouchListener
                 (
                         new View.OnTouchListener() {
                             @Override
@@ -156,19 +156,19 @@ public class ProfilEtbFragment extends Fragment {
                                 return true;
                             }
                         }
-                );
+                );*/
         testtab3.setOnTouchListener
                 (
                         new View.OnTouchListener() {
                             @Override
                             public boolean onTouch(View v, MotionEvent event) {
                                 testtab3.setPressed(true);
-                                testtab2.setPressed(false);
+                                //testtab2.setPressed(false);
                                 testtab1.setPressed(false);
 
                                 propLayout3.setVisibility(View.VISIBLE);
                                 propLayout1.setVisibility(View.INVISIBLE);
-                                propLayout2.setVisibility(View.INVISIBLE);
+                                //propLayout2.setVisibility(View.INVISIBLE);
                                 return true;
                             }
                         }

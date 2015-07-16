@@ -52,7 +52,7 @@ public class HomeFragment extends Fragment {
     ImageView img;
     private TextView Demande_inscription, Nb_events, Titre, Date_debut, Date_fin, Heure_Debut, Heure_fin, Statut;
     int nbreponse;
-    private List<String> titre, date_debut, statut_recrutement, id_etablissement;
+    private List<String> id_event, titreEvent, date_debutEvent, statut_recrutementEvent,  EtbEvent, villeEvent, paysEvent, imgUrlEvent, genre_musicalEvent;
     ProgressDialog progress;
     ProgressDialog progress2;
     Bitmap imgurl;
@@ -78,6 +78,9 @@ public class HomeFragment extends Fragment {
     String id_artist;
 
     String idEtablissement;
+
+    String Event;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -124,6 +127,7 @@ public class HomeFragment extends Fragment {
 
         favorisTask = new ShowAllEtbFavoris();
         StartAsyncTaskInParallel(favorisTask);
+
 
         final GestureDetector gesture = new GestureDetector(getActivity(),
                 new GestureDetector.SimpleOnGestureListener() {
@@ -467,7 +471,6 @@ public class HomeFragment extends Fragment {
                 i=0;
                 afficheProfilContent(i);
 
-
                 is.close();
 
             } catch (Exception e) {
@@ -484,6 +487,13 @@ public class HomeFragment extends Fragment {
     {
 
         idEtablissement = etablissement_id.get(i).toString();
+
+        Toast.makeText(getActivity(), idEtablissement, Toast.LENGTH_LONG).show();
+
+        //Appel à la fonction permettant l'affichage de l'établissement
+        /**************/
+        getEtb(etablissement_id.get(i).toString());
+        /**************/
 
         Email.setText(email.get(i).toString());
         Nom.setText(nom.get(i).toString());
@@ -543,6 +553,7 @@ public class HomeFragment extends Fragment {
         }
 
     }
+
     public void insertContact(String name, String email, String tel) {
 
         Intent intent = new Intent(Intent.ACTION_INSERT);
@@ -710,4 +721,111 @@ public class HomeFragment extends Fragment {
     }
 
 
+
+//Traitement de l'affichage des evenements en fonction de l'id_etablissement
+    protected  void getEtb(String id_etablissement)
+    {
+        String result = null;
+        String tag = "read_AllEtablissementEvents";
+        InputStream is = null;
+        List<NameValuePair> nameValuePairs;
+
+        //setting nameValuePairs
+        nameValuePairs = new ArrayList<NameValuePair>(1);
+        //adding string variables into the NameValuePairs
+        nameValuePairs.add(new BasicNameValuePair("tag", tag));
+        nameValuePairs.add(new BasicNameValuePair("id_etablissement", id_etablissement));
+
+        //setting the connection to the database
+        try {
+            //Setting up the default http client
+            HttpClient httpClient = new DefaultHttpClient();
+
+            //setting up the http post method
+            HttpPost httpPost = new HttpPost("http://peestash.peestash.fr/index.php");
+            httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+
+            //getting the response
+            HttpResponse response = httpClient.execute(httpPost);
+
+            //setting up the entity
+            HttpEntity entity = response.getEntity();
+
+            //setting up the content inside the input stream reader
+            is = entity.getContent();
+
+
+        } catch (ClientProtocolException e) {
+
+            Log.e("ClientProtocole", "Log_tag");
+            String msg = "Erreur client protocole";
+
+        } catch (IOException e) {
+            Log.e("Log_tag", "IOException");
+            e.printStackTrace();
+            String msg = "Erreur IOException";
+        }
+        try {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+            String json = reader.readLine();
+            JSONTokener tokener = new JSONTokener(json);
+            JSONArray finalResult = new JSONArray(tokener);
+
+            int i=0;
+            // Access by key : value
+            nbreponse = finalResult.length();
+            String nb = String.valueOf(nbreponse);
+            System.out.println("nb des evenements recupere depuis bdd " + nb);
+
+            id_event = new ArrayList<String>(nbreponse);
+            titreEvent = new ArrayList<String>(nbreponse);
+            villeEvent = new ArrayList<String>(nbreponse);
+            paysEvent = new ArrayList<String>(nbreponse);
+            date_debutEvent = new ArrayList<String>(nbreponse);
+            imgUrlEvent = new ArrayList<String>(nbreponse);
+            genre_musicalEvent = new ArrayList<String>(nbreponse);
+            statut_recrutementEvent = new ArrayList<String>(nbreponse);
+            EtbEvent = new ArrayList<String>(nbreponse);
+
+            for (i = 0; i < finalResult.length(); i++) {
+
+                JSONObject element = finalResult.getJSONObject(i);
+
+                id_event.add(element.getString("id"));
+                titreEvent.add(element.getString("titre"));
+                date_debutEvent.add(element.getString("date_debut"));
+                villeEvent.add(element.getString("ville"));
+                paysEvent.add(element.getString("pays"));
+                imgUrlEvent.add(element.getString("img_url"));
+                genre_musicalEvent.add(element.getString("genre_musical"));
+                statut_recrutementEvent.add(element.getString("statut_recrutement"));
+                EtbEvent.add(element.getString("id_etablissement"));
+            }
+
+            list.setAdapter(null);
+            for(i=0;i<finalResult.length();i++) {
+
+                afficheAllEventsResume(i);
+            }
+            list.setAdapter(adapter);
+
+            is.close();
+        } catch (Exception e) {
+            Log.i("tagconvertstr", "" + e.toString());
+        }
+        if (progress.isShowing()) {
+            progress.dismiss();
+        }
+    }
+
+    //afficher le détail d'un evenement
+    protected void afficheAllEventsResume(int i)
+    {
+
+        arrayList.add(titreEvent.get(i).toString().toUpperCase() + "\n" + "Date : " + date_debutEvent.get(i).toString()
+                + "\n" + villeEvent.get(i).toString().toUpperCase() + ", " + paysEvent.get(i).toString().toUpperCase()
+                + "\n" + "Genre : " + genre_musicalEvent.get(i).toString().replace(String.valueOf("["), "").replace(String.valueOf("]"), "")
+                + "\n" + "Statut du recrutement : " + statut_recrutementEvent.get(i).toString());
+
+    }
 }
